@@ -1,67 +1,198 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAP Garland, LLC</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-      color: #333;
-    }
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h1, h2 {
-      color: #003366;
-    }
-    .contact {
-      background: #fff;
-      padding: 20px;
-      border-left: 5px solid #003366;
-      margin-top: 30px;
-    }
-    footer {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 50px;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SR-SLX Partners LLC — Service Fix Auto</title>
+<meta name="description" content="SR-SLX Partners LLC · Service Fix Auto in San Jose, CA. Fast diagnostics, brakes, engines, and maintenance. Email support@drenvior.shop • (740) 782-4063.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* workshop palette */
+    --ink:#0c1117;
+    --bg:#0a0f14;
+    --panel:#111824;
+    --paper:#141c29;
+    --text:#eaf1ff;
+    --muted:#9db0c8;
+    --accent:#f97316;      /* safety orange */
+    --accent2:#60a5fa;     /* steel blue */
+    --line:rgba(255,255,255,.12);
+    --ring:rgba(96,165,250,.28);
+    --max:1200px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:Outfit,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--text); line-height:1.65;
+    background:
+      radial-gradient(1100px 520px at 14% 8%, rgba(96,165,250,.15), transparent 60%),
+      radial-gradient(900px 520px at 88% 96%, rgba(249,115,22,.12), transparent 60%),
+      linear-gradient(180deg,var(--bg),#0e1520);
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* Top bar */
+  .top{position:sticky;top:0;z-index:40;background:rgba(10,15,20,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{max-width:var(--max);margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.4px}
+  .mark{width:40px;height:40px;border-radius:10px;background:
+        conic-gradient(from 210deg,var(--accent),#ffd7b1,var(--accent2),#34d399,var(--accent));box-shadow:0 10px 24px rgba(96,165,250,.22)}
+  .nav{display:flex;gap:10px;flex-wrap:wrap}
+  .nav a{padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.06);opacity:.95}
+  .nav a:hover{opacity:1}
+
+  /* Wrapper */
+  .wrap{max-width:var(--max);margin:0 auto;padding:22px}
+
+  /* HERO — banner + spec chips */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 18px 36px rgba(2,6,23,.28)}
+  .kicker{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(249,115,22,.14);font-weight:800}
+  .title{font-size:clamp(34px,6.2vw,72px);line-height:1.04;margin:10px 0 6px}
+  .subtitle{color:var(--muted);margin:0 0 16px}
+  .cta{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{padding:12px 16px;border-radius:12px;font-weight:900;border:0;cursor:pointer}
+  .btn-primary{background:#fff;color:#0c1117;box-shadow:0 14px 34px var(--ring)}
+  .btn-ghost{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff}
+  .figure{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line)}
+  .figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;filter:saturate(1.02)}
+  .badge{position:absolute;right:14px;top:14px;padding:8px 12px;border-radius:999px;background:#fff0e7;color:#22150c;font-weight:900;box-shadow:0 10px 24px rgba(249,115,22,.25)}
+
+  .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+  .chip{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+  .chip b{color:#fff}
+
+  section{padding:44px 0 0}
+  .section-title{font-size:26px;margin:0 0 8px;background:linear-gradient(120deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .muted{color:var(--muted)}
+
+  /* Services list */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .svc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .svc h3{margin:6px 0 6px;font-size:18px}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:linear-gradient(120deg,var(--accent2),var(--accent));margin-right:10px}
+
+  /* Gallery rail */
+  .rail{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px;margin:0 -6px}
+  .shot{scroll-snap-align:center;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+  .shot img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9;transition:transform .45s}
+  .shot:hover img{transform:scale(1.05)}
+
+  /* Contact */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#0a1626;color:#fff}
+  input:focus,textarea:focus{outline:0;box-shadow:0 0 0 4px var(--ring)}
+  textarea{min-height:120px;resize:vertical}
+  .send{margin-top:10px;padding:12px 16px;border-radius:12px;font-weight:900;background:linear-gradient(120deg,var(--accent2),var(--accent));color:#0b1320;border:0;box-shadow:0 12px 28px var(--ring);cursor:pointer}
+  .map{width:100%;height:340px;border:0;border-radius:14px;border:1px solid var(--line)}
+
+  footer{margin:28px 0 12px;text-align:center;color:var(--muted)}
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr}
+    .chips{grid-template-columns:repeat(2,1fr)}
+    .contact{grid-template-columns:1fr}
+    .rail{grid-auto-columns:88%}
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>CAP Garland, LLC</h1>
-    <p>Private Investment Fund</p>
-  </header>
 
-  <section>
-    <h2>About Us</h2>
-    <p>CAP Garland, LLC is a Washington-based private investment fund focused on delivering value through diversified investment strategies.</p>
+<!-- Top -->
+<div class="top">
+  <div class="bar">
+    <div class="brand"><div class="mark" aria-hidden="true"></div> SR-SLX Partners LLC</div>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
 
-    <h2>Contact</h2>
-    <div class="contact">
-      <p><strong>Address:</strong> 915 W 2nd Ave, Spokane, WA 99201</p>
-      <p><strong>Email:</strong> <a href="mailto:ryanberg@capgarland.shop">ryanberg@capgarland.shop</a></p>
-      <p><strong>Phone:</strong> (509) 822-3850</p>
+<div class="wrap">
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="card">
+      <span class="kicker">San Jose, CA • Ora St • 95129</span>
+      <h1 class="title">Service Fix Auto</h1>
+      <p class="subtitle">From quick diagnostics to full repairs—engines, brakes, suspensions, and scheduled maintenance. Straight talk. Solid work. Fair pricing.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Request a Quote</a>
+        <a class="btn btn-ghost" href="mailto:support@drenvior.shop">support@drenvior.shop</a>
+        <a class="btn btn-ghost" href="tel:+17407824063">(740) 782-4063</a>
+      </div>
+
+      <div class="chips" aria-label="Highlights">
+        <div class="chip"><b>Same-Day</b><div class="muted">many jobs</div></div>
+        <div class="chip"><b>Diagnostics</b><div class="muted">OBD-II & smoke</div></div>
+        <div class="chip"><b>Warranty</b><div class="muted">parts & labor</div></div>
+        <div class="chip"><b>Fleet</b><div class="muted">service plans</div></div>
+      </div>
+    </div>
+
+    <figure class="figure">
+      <span class="badge">ASE-minded • Insured</span>
+      <img src="https://avatars.mds.yandex.net/get-altay/11018317/2a0000018a69bb11db7c4bf4fa08834848f1/XXL_height" alt="Auto service — under-hood inspection">
+    </figure>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 class="section-title">Core Services</h2>
+    <p class="muted">Maintenance you can trust, repair you can feel.</p>
+    <div class="grid">
+      <div class="svc"><h3><span class="dot"></span>Computer Diagnostics</h3><p class="muted">Check-engine lights, drivability, electrical tracing.</p></div>
+      <div class="svc"><h3><span class="dot"></span>Brakes & Suspension</h3><p class="muted">Pads/rotors, hydraulics, struts, control arms, align-ready.</p></div>
+      <div class="svc"><h3><span class="dot"></span>Engines & Cooling</h3><p class="muted">Leaks, belts, pumps, radiators, gaskets, timing.</p></div>
+      <div class="svc"><h3><span class="dot"></span>Fluids & Tune-ups</h3><p class="muted">Oil, ATF, coolant, plugs/coils, filters—service intervals.</p></div>
     </div>
   </section>
 
-  <footer>
-    &copy; 2025 CAP Garland, LLC. All rights reserved.
-  </footer>
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2 class="section-title">Shop Gallery</h2>
+    <div class="rail">
+      <figure class="shot"><img src="https://avatars.mds.yandex.net/i?id=820ff8dd6b7effaa87568161a741d7af00924dea-9107575-images-thumbs&n=13" alt="Mechanic bay"></figure>
+      <figure class="shot"><img src="https://avatars.mds.yandex.net/i?id=003994aeede043b8eb2c1d2ab1fcb13396137968-4255823-images-thumbs&n=13" alt="Brake service"></figure>
+      <figure class="shot"><img src="https://avatars.mds.yandex.net/get-altay/13063086/2a00000193f2d4b727fac49e2123768522a9/XXL_height" alt="Engine work"></figure>
+      <figure class="shot"><img src="https://avatars.mds.yandex.net/get-altay/11018317/2a0000018a69bb11db7c4bf4fa08834848f1/XXL_height" alt="Diagnostic tools"></figure>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact & Quotes</h2>
+    <div class="contact">
+      <div class="card">
+        <form onsubmit="event.preventDefault(); window.location.href='mailto:support@drenvior.shop?subject=Service%20Fix%20Auto%20Quote&body=' + encodeURIComponent(document.getElementById('msg').value);">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Your email" required>
+          <textarea id="msg" placeholder="Vehicle (year/make/model), issue, preferred time"></textarea>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="send" type="submit">Send</button>
+            <a class="btn btn-ghost" href="tel:+17407824063">Call (740) 782-4063</a>
+          </div>
+        </form>
+      </div>
+      <div class="card">
+        <ul style="list-style:none;margin:0 0 12px;padding:0">
+          <li style="padding:6px 0"><strong>Email:</strong> <a href="mailto:support@drenvior.shop">support@drenvior.shop</a></li>
+          <li style="padding:6px 0"><strong>Phone:</strong> <a href="tel:+17407824063">(740) 782-4063</a></li>
+          <li style="padding:6px 0"><strong>Address:</strong> Ora St, San Jose, CA 95129</li>
+        </ul>
+        <iframe class="map" title="Map" loading="lazy"
+          src="https://www.google.com/maps?q=Ora+St+San+Jose+CA+95129&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>© <span id="year"></span> SR-SLX Partners LLC · Service Fix Auto · All rights reserved.</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
